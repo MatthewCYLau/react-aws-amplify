@@ -9,9 +9,12 @@
     "@testing-library/user-event": "^7.1.2",
     "antd": "^4.5.1",
     "aws-amplify": "^3.0.22",
+    "history": "^5.0.0",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
-    "react-scripts": "3.4.1"
+    "react-router-dom": "^5.2.0",
+    "react-scripts": "3.4.1",
+    "redux": "^4.0.5"
   },
   "scripts": {
     "start": "react-scripts start",
