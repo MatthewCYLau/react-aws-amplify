@@ -7,14 +7,16 @@ import { Card } from "antd";
 import { Button } from "antd";
 import { Input } from "antd";
 import "antd/dist/antd.css";
-import { Layout, Menu, Breadcrumb } from "antd";
+import { Layout, Menu, Breadcrumb, Spin } from "antd";
 
 const { Header, Content, Footer } = Layout;
 
 const HomePage = () => {
-  const initialState = { name: "", description: "" };
-  const [formState, setFormState] = useState(initialState);
+  const initialFormState = { name: "", description: "" };
+  const loadingState = false;
+  const [formState, setFormState] = useState(initialFormState);
   const [todos, setTodos] = useState([]);
+  const [loadingComplete, setloadingComplete] = useState(loadingState);
 
   useEffect(() => {
     fetchTodos();
@@ -29,6 +31,7 @@ const HomePage = () => {
       const todoData = await API.graphql(graphqlOperation(listTodos));
       const todos = todoData.data.listTodos.items;
       setTodos(todos);
+      setloadingComplete({ loadingComplete: true });
     } catch (err) {
       console.log("error fetching todos");
     }
@@ -39,7 +42,7 @@ const HomePage = () => {
       if (!formState.name || !formState.description) return;
       const todo = { ...formState };
       setTodos([...todos, todo]);
-      setFormState(initialState);
+      setFormState(initialFormState);
       await API.graphql(graphqlOperation(createTodo, { input: todo }));
       fetchTodos();
     } catch (err) {
@@ -97,19 +100,24 @@ const HomePage = () => {
                 Create Todo
               </Button>
             </div>
-
-            {todos.map((todo, index) => (
-              <Card
-                key={todo.id ? todo.id : index}
-                title={todo.name}
-                style={{ width: 300 }}
-              >
-                <p>{todo.description}</p>
-                <Button type="primary" onClick={() => removeTodo(todo.id)}>
-                  Done
-                </Button>
-              </Card>
-            ))}
+            {loadingComplete ? (
+              <div>
+                {todos.map((todo, index) => (
+                  <Card
+                    key={todo.id ? todo.id : index}
+                    title={todo.name}
+                    style={{ width: 300 }}
+                  >
+                    <p>{todo.description}</p>
+                    <Button type="primary" onClick={() => removeTodo(todo.id)}>
+                      Done
+                    </Button>
+                  </Card>
+                ))}
+              </div>
+            ) : (
+              <Spin />
+            )}
           </div>
         </Content>
         <Footer style={{ textAlign: "center" }}>Matthew Lau ©2020</Footer>
