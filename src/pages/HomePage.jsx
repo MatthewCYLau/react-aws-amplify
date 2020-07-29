@@ -8,6 +8,7 @@ import { Button } from "antd";
 import { Input } from "antd";
 import "antd/dist/antd.css";
 import { Layout, Menu, Breadcrumb, Spin } from "antd";
+import { Link } from "react-router-dom";
 
 const { Header, Content, Footer } = Layout;
 
@@ -68,8 +69,12 @@ const HomePage = () => {
         <Header>
           <div className="logo" />
           <Menu theme="dark" mode="horizontal" defaultSelectedKeys={["1"]}>
-            <Menu.Item key="1">Home</Menu.Item>
-            <Menu.Item key="2">About</Menu.Item>
+            <Menu.Item key="1">
+              <Link to="/">Home</Link>
+            </Menu.Item>
+            <Menu.Item key="2">
+              <Link to="/about">About</Link>
+            </Menu.Item>
           </Menu>
         </Header>
         <Content style={{ padding: "0 50px" }}>
