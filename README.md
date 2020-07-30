@@ -2,6 +2,8 @@
 
 A simple React app deployed onto AWS Amplify
 
+App URL [here](https://dev.d2s2i9c3945wq4.amplifyapp.com/)
+
 ## Build/Run Locally
 
 Install and configure AWS Amplify CLI [here](https://docs.amplify.aws/start/getting-started/installation/q/integration/react)
