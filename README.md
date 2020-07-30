@@ -19,7 +19,7 @@ npm install # installs backend node modules
 In the project root directory, run this command:
 
 ```bash
-yarn install # app starts at http://localhost:3000
+yarn start # app starts at http://localhost:3000
 ```
 
 ## Usage
