@@ -1,25 +1,13 @@
 import React from "react";
 import { PageHeader } from "antd";
-import { Layout, Menu } from "antd";
-import { Link } from "react-router-dom";
+import { Layout } from "antd";
 
-const { Header, Content, Footer } = Layout;
+const { Content, Footer } = Layout;
 
 const AboutPage = () => {
   return (
     <div>
-      <Layout className="layout" style={styles.layout}>
-        <Header>
-          <div className="logo" />
-          <Menu theme="dark" mode="horizontal" defaultSelectedKeys={["1"]}>
-            <Menu.Item key="1">
-              <Link to="/">Home</Link>
-            </Menu.Item>
-            <Menu.Item key="2">
-              <Link to="/about">About</Link>
-            </Menu.Item>
-          </Menu>
-        </Header>
+      <Layout className="layout">
         <Content style={{ padding: "0 50px" }}>
           <div className="site-layout-content">
             <PageHeader
@@ -36,9 +24,6 @@ const AboutPage = () => {
 };
 
 const styles = {
-  layout: {
-    minHeight: "100vh"
-  },
   input: {
     margin: "10px 0"
   },

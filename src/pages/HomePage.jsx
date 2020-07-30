@@ -7,10 +7,9 @@ import { Card } from "antd";
 import { Button } from "antd";
 import { Input } from "antd";
 import "antd/dist/antd.css";
-import { Layout, Menu, Spin } from "antd";
-import { Link } from "react-router-dom";
+import { Layout, Spin } from "antd";
 
-const { Header, Content, Footer } = Layout;
+const { Content, Footer } = Layout;
 
 const HomePage = () => {
   const initialFormState = { name: "", email: "" };
@@ -73,18 +72,7 @@ const HomePage = () => {
 
   return (
     <div>
-      <Layout className="layout" style={styles.layout}>
-        <Header>
-          <div className="logo" />
-          <Menu theme="dark" mode="horizontal" defaultSelectedKeys={["1"]}>
-            <Menu.Item key="1">
-              <Link to="/">Home</Link>
-            </Menu.Item>
-            <Menu.Item key="2">
-              <Link to="/about">About</Link>
-            </Menu.Item>
-          </Menu>
-        </Header>
+      <Layout className="layout">
         <Content style={{ padding: "0 50px" }}>
           <div className="site-layout-content">
             <PageHeader
@@ -144,9 +132,6 @@ const HomePage = () => {
 };
 
 const styles = {
-  layout: {
-    minHeight: "100vh"
-  },
   input: {
     margin: "10px 0"
   },

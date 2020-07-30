@@ -5,6 +5,7 @@ import { withAuthenticator } from "@aws-amplify/ui-react";
 import awsExports from "./aws-exports";
 import HomePage from "../src/pages/HomePage";
 import Routes from "./routers/Routes";
+import Navbar from "../src/components/Navbar";
 
 // Redux
 import { Provider } from "react-redux";
@@ -16,6 +17,7 @@ const App = () => (
   <Provider store={store}>
     <Router>
       <Fragment>
+        <Navbar />
         <Switch>
           <Route exact path="/" component={HomePage} />
           <Route component={Routes} />
