@@ -6,6 +6,10 @@ import awsExports from "./aws-exports";
 import HomePage from "../src/pages/HomePage";
 import Routes from "./routers/Routes";
 import Navbar from "../src/components/Navbar";
+import Footer from "../src/components/Footer";
+
+// AntUI
+import { Layout } from "antd";
 
 // Redux
 import { Provider } from "react-redux";
@@ -17,14 +21,22 @@ const App = () => (
   <Provider store={store}>
     <Router>
       <Fragment>
-        <Navbar />
-        <Switch>
-          <Route exact path="/" component={HomePage} />
-          <Route component={Routes} />
-        </Switch>
+        <Layout className="layout" style={styles.layout}>
+          <Navbar />
+          <Switch>
+            <Route exact path="/" component={HomePage} />
+            <Route component={Routes} />
+          </Switch>
+          <Footer />
+        </Layout>
       </Fragment>
     </Router>
   </Provider>
 );
 
+const styles = {
+  layout: {
+    minHeight: "100vh"
+  }
+};
 export default withAuthenticator(App);

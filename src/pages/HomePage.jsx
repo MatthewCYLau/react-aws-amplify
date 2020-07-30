@@ -9,7 +9,7 @@ import { Input } from "antd";
 import "antd/dist/antd.css";
 import { Layout, Spin } from "antd";
 
-const { Content, Footer } = Layout;
+const { Content } = Layout;
 
 const HomePage = () => {
   const initialFormState = { name: "", email: "" };
@@ -72,61 +72,58 @@ const HomePage = () => {
 
   return (
     <div>
-      <Layout className="layout">
-        <Content style={{ padding: "0 50px" }}>
-          <div className="site-layout-content">
-            <PageHeader
-              className="site-page-header"
-              title="Steve's PoC Portal"
-              subTitle="powered By AWS Amplify"
-              style={styles.header}
+      <Content style={{ padding: "0 50px" }}>
+        <div className="site-layout-content">
+          <PageHeader
+            className="site-page-header"
+            title="Steve's PoC Portal"
+            subTitle="powered By AWS Amplify"
+            style={styles.header}
+          />
+          <div>
+            <Input
+              onChange={event => setInput("name", event.target.value)}
+              value={formState.name}
+              placeholder="Name"
+              style={styles.input}
             />
-            <div>
-              <Input
-                onChange={event => setInput("name", event.target.value)}
-                value={formState.name}
-                placeholder="Name"
-                style={styles.input}
-              />
-              <Input
-                onChange={event => setInput("email", event.target.value)}
-                value={formState.email}
-                placeholder="Email"
-                style={styles.input}
-              />
-              <Button
-                onClick={addRegistration}
-                type="primary"
-                style={styles.submit}
-              >
-                Sign Up
-              </Button>
-            </div>
-            {loadingComplete ? (
-              <div>
-                {registrations.map((registration, index) => (
-                  <Card
-                    key={registration.id ? registration.id : index}
-                    title={registration.name}
-                    style={{ width: 300 }}
-                  >
-                    <p>{registration.email}</p>
-                    <Button
-                      type="primary"
-                      onClick={() => removeRegistration(registration.id)}
-                    >
-                      Remove
-                    </Button>
-                  </Card>
-                ))}
-              </div>
-            ) : (
-              <Spin />
-            )}
+            <Input
+              onChange={event => setInput("email", event.target.value)}
+              value={formState.email}
+              placeholder="Email"
+              style={styles.input}
+            />
+            <Button
+              onClick={addRegistration}
+              type="primary"
+              style={styles.submit}
+            >
+              Sign Up
+            </Button>
           </div>
-        </Content>
-        <Footer style={{ textAlign: "center" }}>Matthew Lau ©2020</Footer>
-      </Layout>
+          {loadingComplete ? (
+            <div>
+              {registrations.map((registration, index) => (
+                <Card
+                  key={registration.id ? registration.id : index}
+                  title={registration.name}
+                  style={{ width: 300 }}
+                >
+                  <p>{registration.email}</p>
+                  <Button
+                    type="primary"
+                    onClick={() => removeRegistration(registration.id)}
+                  >
+                    Remove
+                  </Button>
+                </Card>
+              ))}
+            </div>
+          ) : (
+            <Spin />
+          )}
+        </div>
+      </Content>
     </div>
   );
 };
