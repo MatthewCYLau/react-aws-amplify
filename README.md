@@ -11,7 +11,7 @@ Install and configure AWS Amplify CLI [here](https://docs.amplify.aws/start/gett
 Then, use the npm package manager to install node modules
 
 ```bash
-npm install # installs backend node modules
+npm install # installs node modules
 ```
 
 ## Usage
@@ -22,7 +22,7 @@ In the project root directory, run this command:
 yarn start # app starts at http://localhost:3000
 ```
 
-## Usage
+## Deploy
 
 In the project root directory, run this command:
 
