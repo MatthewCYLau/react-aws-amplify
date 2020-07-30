@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { API, graphqlOperation } from "aws-amplify";
-import { createTodo, deleteTodo } from "../graphql/mutations";
-import { listTodos } from "../graphql/queries";
+import { createRegistration, deleteRegistration } from "../graphql/mutations";
+import { listRegistrations } from "../graphql/queries";
 import { PageHeader } from "antd";
 import { Card } from "antd";
 import { Button } from "antd";
@@ -13,53 +13,61 @@ import { Link } from "react-router-dom";
 const { Header, Content, Footer } = Layout;
 
 const HomePage = () => {
-  const initialFormState = { name: "", description: "" };
+  const initialFormState = { name: "", email: "" };
   const loadingState = false;
   const [formState, setFormState] = useState(initialFormState);
-  const [todos, setTodos] = useState([]);
+  const [registrations, setRegistrations] = useState([]);
   const [loadingComplete, setloadingComplete] = useState(loadingState);
 
   useEffect(() => {
-    fetchTodos();
+    fetchRegistrations();
   }, []);
 
   function setInput(key, value) {
     setFormState({ ...formState, [key]: value });
   }
 
-  async function fetchTodos() {
+  async function fetchRegistrations() {
     try {
-      const todoData = await API.graphql(graphqlOperation(listTodos));
-      const todos = todoData.data.listTodos.items;
-      setTodos(todos);
+      const registrationDetails = await API.graphql(
+        graphqlOperation(listRegistrations)
+      );
+      const registrations = registrationDetails.data.listRegistrations.items;
+      setRegistrations(registrations);
       setloadingComplete({ loadingComplete: true });
     } catch (err) {
-      console.log("error fetching todos");
+      console.log("error fetching registrations");
     }
   }
 
-  async function addTodo() {
+  async function addRegistration() {
     try {
-      if (!formState.name || !formState.description) return;
-      const todo = { ...formState };
-      setTodos([...todos, todo]);
+      if (!formState.name || !formState.email) return;
+      const registration = { ...formState };
+      setRegistrations([...registrations, registration]);
       setFormState(initialFormState);
-      await API.graphql(graphqlOperation(createTodo, { input: todo }));
-      fetchTodos();
+      await API.graphql(
+        graphqlOperation(createRegistration, { input: registration })
+      );
+      fetchRegistrations();
     } catch (err) {
-      console.log("error creating todo:", err);
+      console.log("error creating registration:", err);
     }
   }
 
-  async function removeTodo(id) {
+  async function removeRegistration(id) {
     try {
-      const todoDetails = {
+      const registrationDetails = {
         id
       };
-      setTodos(todos.filter(todo => todo.id !== id));
-      await API.graphql(graphqlOperation(deleteTodo, { input: todoDetails }));
+      setRegistrations(
+        registrations.filter(registration => registration.id !== id)
+      );
+      await API.graphql(
+        graphqlOperation(deleteRegistration, { input: registrationDetails })
+      );
     } catch (err) {
-      console.log("error removing todo:", err);
+      console.log("error removing registration:", err);
     }
   }
 
@@ -79,12 +87,12 @@ const HomePage = () => {
         </Header>
         <Content style={{ padding: "0 50px" }}>
           <Breadcrumb style={{ margin: "16px 0" }}>
-            <Breadcrumb.Item>To-Do</Breadcrumb.Item>
+            <Breadcrumb.Item>Sign Up</Breadcrumb.Item>
           </Breadcrumb>
           <div className="site-layout-content">
             <PageHeader
               className="site-page-header"
-              title="Matt's To-Do List"
+              title="Steve's PoC Portal"
               subTitle="powered By AWS Amplify"
               style={styles.header}
             />
@@ -96,26 +104,33 @@ const HomePage = () => {
                 style={styles.input}
               />
               <Input
-                onChange={event => setInput("description", event.target.value)}
-                value={formState.description}
-                placeholder="Description"
+                onChange={event => setInput("email", event.target.value)}
+                value={formState.email}
+                placeholder="Email"
                 style={styles.input}
               />
-              <Button onClick={addTodo} type="primary" style={styles.submit}>
-                Create Todo
+              <Button
+                onClick={addRegistration}
+                type="primary"
+                style={styles.submit}
+              >
+                Sign Up
               </Button>
             </div>
             {loadingComplete ? (
               <div>
-                {todos.map((todo, index) => (
+                {registrations.map((registration, index) => (
                   <Card
-                    key={todo.id ? todo.id : index}
-                    title={todo.name}
+                    key={registration.id ? registration.id : index}
+                    title={registration.name}
                     style={{ width: 300 }}
                   >
-                    <p>{todo.description}</p>
-                    <Button type="primary" onClick={() => removeTodo(todo.id)}>
-                      Done
+                    <p>{registration.email}</p>
+                    <Button
+                      type="primary"
+                      onClick={() => removeRegistration(registration.id)}
+                    >
+                      Remove
                     </Button>
                   </Card>
                 ))}

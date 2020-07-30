@@ -22,7 +22,7 @@ const AboutPage = () => {
         </Header>
         <Content style={{ padding: "0 50px" }}>
           <Breadcrumb style={{ margin: "16px 0" }}>
-            <Breadcrumb.Item>To-Do</Breadcrumb.Item>
+            <Breadcrumb.Item>Sign Up</Breadcrumb.Item>
           </Breadcrumb>
           <div className="site-layout-content">
             <PageHeader

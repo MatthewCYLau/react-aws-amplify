@@ -15,7 +15,7 @@
         "name" : "Query",
         "description" : null,
         "fields" : [ {
-          "name" : "getTodo",
+          "name" : "getRegistration",
           "description" : null,
           "args" : [ {
             "name" : "id",
@@ -33,20 +33,20 @@
           } ],
           "type" : {
             "kind" : "OBJECT",
-            "name" : "Todo",
+            "name" : "Registration",
             "ofType" : null
           },
           "isDeprecated" : false,
           "deprecationReason" : null
         }, {
-          "name" : "listTodos",
+          "name" : "listRegistrations",
           "description" : null,
           "args" : [ {
             "name" : "filter",
             "description" : null,
             "type" : {
               "kind" : "INPUT_OBJECT",
-              "name" : "ModelTodoFilterInput",
+              "name" : "ModelRegistrationFilterInput",
               "ofType" : null
             },
             "defaultValue" : null
@@ -71,7 +71,7 @@
           } ],
           "type" : {
             "kind" : "OBJECT",
-            "name" : "ModelTodoConnection",
+            "name" : "ModelRegistrationConnection",
             "ofType" : null
           },
           "isDeprecated" : false,
@@ -83,7 +83,7 @@
         "possibleTypes" : null
       }, {
         "kind" : "OBJECT",
-        "name" : "Todo",
+        "name" : "Registration",
         "description" : null,
         "fields" : [ {
           "name" : "id",
@@ -116,7 +116,7 @@
           "isDeprecated" : false,
           "deprecationReason" : null
         }, {
-          "name" : "description",
+          "name" : "email",
           "description" : null,
           "args" : [ ],
           "type" : {
@@ -190,7 +190,7 @@
         "possibleTypes" : null
       }, {
         "kind" : "OBJECT",
-        "name" : "ModelTodoConnection",
+        "name" : "ModelRegistrationConnection",
         "description" : null,
         "fields" : [ {
           "name" : "items",
@@ -201,7 +201,7 @@
             "name" : null,
             "ofType" : {
               "kind" : "OBJECT",
-              "name" : "Todo",
+              "name" : "Registration",
               "ofType" : null
             }
           },
@@ -225,7 +225,7 @@
         "possibleTypes" : null
       }, {
         "kind" : "INPUT_OBJECT",
-        "name" : "ModelTodoFilterInput",
+        "name" : "ModelRegistrationFilterInput",
         "description" : null,
         "fields" : null,
         "inputFields" : [ {
@@ -247,7 +247,7 @@
           },
           "defaultValue" : null
         }, {
-          "name" : "description",
+          "name" : "email",
           "description" : null,
           "type" : {
             "kind" : "INPUT_OBJECT",
@@ -263,7 +263,7 @@
             "name" : null,
             "ofType" : {
               "kind" : "INPUT_OBJECT",
-              "name" : "ModelTodoFilterInput",
+              "name" : "ModelRegistrationFilterInput",
               "ofType" : null
             }
           },
@@ -276,7 +276,7 @@
             "name" : null,
             "ofType" : {
               "kind" : "INPUT_OBJECT",
-              "name" : "ModelTodoFilterInput",
+              "name" : "ModelRegistrationFilterInput",
               "ofType" : null
             }
           },
@@ -286,7 +286,7 @@
           "description" : null,
           "type" : {
             "kind" : "INPUT_OBJECT",
-            "name" : "ModelTodoFilterInput",
+            "name" : "ModelRegistrationFilterInput",
             "ofType" : null
           },
           "defaultValue" : null
@@ -712,7 +712,7 @@
         "name" : "Mutation",
         "description" : null,
         "fields" : [ {
-          "name" : "createTodo",
+          "name" : "createRegistration",
           "description" : null,
           "args" : [ {
             "name" : "input",
@@ -722,7 +722,7 @@
               "name" : null,
               "ofType" : {
                 "kind" : "INPUT_OBJECT",
-                "name" : "CreateTodoInput",
+                "name" : "CreateRegistrationInput",
                 "ofType" : null
               }
             },
@@ -732,20 +732,20 @@
             "description" : null,
             "type" : {
               "kind" : "INPUT_OBJECT",
-              "name" : "ModelTodoConditionInput",
+              "name" : "ModelRegistrationConditionInput",
               "ofType" : null
             },
             "defaultValue" : null
           } ],
           "type" : {
             "kind" : "OBJECT",
-            "name" : "Todo",
+            "name" : "Registration",
             "ofType" : null
           },
           "isDeprecated" : false,
           "deprecationReason" : null
         }, {
-          "name" : "updateTodo",
+          "name" : "updateRegistration",
           "description" : null,
           "args" : [ {
             "name" : "input",
@@ -755,7 +755,7 @@
               "name" : null,
               "ofType" : {
                 "kind" : "INPUT_OBJECT",
-                "name" : "UpdateTodoInput",
+                "name" : "UpdateRegistrationInput",
                 "ofType" : null
               }
             },
@@ -765,20 +765,20 @@
             "description" : null,
             "type" : {
               "kind" : "INPUT_OBJECT",
-              "name" : "ModelTodoConditionInput",
+              "name" : "ModelRegistrationConditionInput",
               "ofType" : null
             },
             "defaultValue" : null
           } ],
           "type" : {
             "kind" : "OBJECT",
-            "name" : "Todo",
+            "name" : "Registration",
             "ofType" : null
           },
           "isDeprecated" : false,
           "deprecationReason" : null
         }, {
-          "name" : "deleteTodo",
+          "name" : "deleteRegistration",
           "description" : null,
           "args" : [ {
             "name" : "input",
@@ -788,7 +788,7 @@
               "name" : null,
               "ofType" : {
                 "kind" : "INPUT_OBJECT",
-                "name" : "DeleteTodoInput",
+                "name" : "DeleteRegistrationInput",
                 "ofType" : null
               }
             },
@@ -798,14 +798,14 @@
             "description" : null,
             "type" : {
               "kind" : "INPUT_OBJECT",
-              "name" : "ModelTodoConditionInput",
+              "name" : "ModelRegistrationConditionInput",
               "ofType" : null
             },
             "defaultValue" : null
           } ],
           "type" : {
             "kind" : "OBJECT",
-            "name" : "Todo",
+            "name" : "Registration",
             "ofType" : null
           },
           "isDeprecated" : false,
@@ -817,7 +817,7 @@
         "possibleTypes" : null
       }, {
         "kind" : "INPUT_OBJECT",
-        "name" : "CreateTodoInput",
+        "name" : "CreateRegistrationInput",
         "description" : null,
         "fields" : null,
         "inputFields" : [ {
@@ -843,7 +843,7 @@
           },
           "defaultValue" : null
         }, {
-          "name" : "description",
+          "name" : "email",
           "description" : null,
           "type" : {
             "kind" : "SCALAR",
@@ -857,7 +857,7 @@
         "possibleTypes" : null
       }, {
         "kind" : "INPUT_OBJECT",
-        "name" : "ModelTodoConditionInput",
+        "name" : "ModelRegistrationConditionInput",
         "description" : null,
         "fields" : null,
         "inputFields" : [ {
@@ -870,7 +870,7 @@
           },
           "defaultValue" : null
         }, {
-          "name" : "description",
+          "name" : "email",
           "description" : null,
           "type" : {
             "kind" : "INPUT_OBJECT",
@@ -886,7 +886,7 @@
             "name" : null,
             "ofType" : {
               "kind" : "INPUT_OBJECT",
-              "name" : "ModelTodoConditionInput",
+              "name" : "ModelRegistrationConditionInput",
               "ofType" : null
             }
           },
@@ -899,7 +899,7 @@
             "name" : null,
             "ofType" : {
               "kind" : "INPUT_OBJECT",
-              "name" : "ModelTodoConditionInput",
+              "name" : "ModelRegistrationConditionInput",
               "ofType" : null
             }
           },
@@ -909,7 +909,7 @@
           "description" : null,
           "type" : {
             "kind" : "INPUT_OBJECT",
-            "name" : "ModelTodoConditionInput",
+            "name" : "ModelRegistrationConditionInput",
             "ofType" : null
           },
           "defaultValue" : null
@@ -919,7 +919,7 @@
         "possibleTypes" : null
       }, {
         "kind" : "INPUT_OBJECT",
-        "name" : "UpdateTodoInput",
+        "name" : "UpdateRegistrationInput",
         "description" : null,
         "fields" : null,
         "inputFields" : [ {
@@ -945,7 +945,7 @@
           },
           "defaultValue" : null
         }, {
-          "name" : "description",
+          "name" : "email",
           "description" : null,
           "type" : {
             "kind" : "SCALAR",
@@ -959,7 +959,7 @@
         "possibleTypes" : null
       }, {
         "kind" : "INPUT_OBJECT",
-        "name" : "DeleteTodoInput",
+        "name" : "DeleteRegistrationInput",
         "description" : null,
         "fields" : null,
         "inputFields" : [ {
@@ -980,34 +980,34 @@
         "name" : "Subscription",
         "description" : null,
         "fields" : [ {
-          "name" : "onCreateTodo",
+          "name" : "onCreateRegistration",
           "description" : null,
           "args" : [ ],
           "type" : {
             "kind" : "OBJECT",
-            "name" : "Todo",
+            "name" : "Registration",
             "ofType" : null
           },
           "isDeprecated" : false,
           "deprecationReason" : null
         }, {
-          "name" : "onUpdateTodo",
+          "name" : "onUpdateRegistration",
           "description" : null,
           "args" : [ ],
           "type" : {
             "kind" : "OBJECT",
-            "name" : "Todo",
+            "name" : "Registration",
             "ofType" : null
           },
           "isDeprecated" : false,
           "deprecationReason" : null
         }, {
-          "name" : "onDeleteTodo",
+          "name" : "onDeleteRegistration",
           "description" : null,
           "args" : [ ],
           "type" : {
             "kind" : "OBJECT",
-            "name" : "Todo",
+            "name" : "Registration",
             "ofType" : null
           },
           "isDeprecated" : false,
@@ -2083,6 +2083,23 @@
         "onFragment" : false,
         "onField" : false
       }, {
+        "name" : "deprecated",
+        "description" : null,
+        "locations" : [ "FIELD_DEFINITION", "ENUM_VALUE" ],
+        "args" : [ {
+          "name" : "reason",
+          "description" : null,
+          "type" : {
+            "kind" : "SCALAR",
+            "name" : "String",
+            "ofType" : null
+          },
+          "defaultValue" : "\"No longer supported\""
+        } ],
+        "onOperation" : false,
+        "onFragment" : false,
+        "onField" : false
+      }, {
         "name" : "aws_publish",
         "description" : "Tells the service which subscriptions will be published to when this mutation is called. This directive is deprecated use @aws_susbscribe directive instead.",
         "locations" : [ "FIELD_DEFINITION" ],
@@ -2128,23 +2145,6 @@
             }
           },
           "defaultValue" : null
-        } ],
-        "onOperation" : false,
-        "onFragment" : false,
-        "onField" : false
-      }, {
-        "name" : "deprecated",
-        "description" : null,
-        "locations" : [ "FIELD_DEFINITION", "ENUM_VALUE" ],
-        "args" : [ {
-          "name" : "reason",
-          "description" : null,
-          "type" : {
-            "kind" : "SCALAR",
-            "name" : "String",
-            "ofType" : null
-          },
-          "defaultValue" : "\"No longer supported\""
         } ],
         "onOperation" : false,
         "onFragment" : false,

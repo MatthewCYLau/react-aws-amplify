@@ -1,5 +1,5 @@
-type Todo @model {
+type Registration @model {
   id: ID!
   name: String!
-  description: String
+  email: String
 }
