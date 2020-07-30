@@ -7,7 +7,7 @@ import { Card } from "antd";
 import { Button } from "antd";
 import { Input } from "antd";
 import "antd/dist/antd.css";
-import { Layout, Menu, Breadcrumb, Spin } from "antd";
+import { Layout, Menu, Spin } from "antd";
 import { Link } from "react-router-dom";
 
 const { Header, Content, Footer } = Layout;
@@ -73,7 +73,7 @@ const HomePage = () => {
 
   return (
     <div>
-      <Footer className="layout" style={styles.layout}>
+      <Layout className="layout" style={styles.layout}>
         <Header>
           <div className="logo" />
           <Menu theme="dark" mode="horizontal" defaultSelectedKeys={["1"]}>
@@ -86,9 +86,6 @@ const HomePage = () => {
           </Menu>
         </Header>
         <Content style={{ padding: "0 50px" }}>
-          <Breadcrumb style={{ margin: "16px 0" }}>
-            <Breadcrumb.Item>Sign Up</Breadcrumb.Item>
-          </Breadcrumb>
           <div className="site-layout-content">
             <PageHeader
               className="site-page-header"
@@ -141,7 +138,7 @@ const HomePage = () => {
           </div>
         </Content>
         <Footer style={{ textAlign: "center" }}>Matthew Lau ©2020</Footer>
-      </Footer>
+      </Layout>
     </div>
   );
 };

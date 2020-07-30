@@ -1,6 +1,6 @@
 import React from "react";
 import { PageHeader } from "antd";
-import { Layout, Menu, Breadcrumb } from "antd";
+import { Layout, Menu } from "antd";
 import { Link } from "react-router-dom";
 
 const { Header, Content, Footer } = Layout;
@@ -8,7 +8,7 @@ const { Header, Content, Footer } = Layout;
 const AboutPage = () => {
   return (
     <div>
-      <Footer className="layout" style={styles.layout}>
+      <Layout className="layout" style={styles.layout}>
         <Header>
           <div className="logo" />
           <Menu theme="dark" mode="horizontal" defaultSelectedKeys={["1"]}>
@@ -21,9 +21,6 @@ const AboutPage = () => {
           </Menu>
         </Header>
         <Content style={{ padding: "0 50px" }}>
-          <Breadcrumb style={{ margin: "16px 0" }}>
-            <Breadcrumb.Item>To-Do</Breadcrumb.Item>
-          </Breadcrumb>
           <div className="site-layout-content">
             <PageHeader
               className="site-page-header"
@@ -33,7 +30,7 @@ const AboutPage = () => {
           </div>
         </Content>
         <Footer style={{ textAlign: "center" }}>Matthew Lau ©2020</Footer>
-      </Footer>
+      </Layout>
     </div>
   );
 };
