@@ -4,8 +4,7 @@ import { createTodo, deleteTodo } from "../graphql/mutations";
 import { listTodos } from "../graphql/queries";
 import { Link } from "react-router-dom";
 import { PageHeader } from "antd";
-import { Card, Button } from "antd";
-import { Input } from "antd";
+import { Card, Button, Input } from "antd";
 import "antd/dist/antd.css";
 import { Layout, Spin } from "antd";
 
@@ -103,7 +102,7 @@ const HomePage = () => {
                   </Button>
                   <Button>
                     <Link className="button" to={`/edit/${todo.id}`}>
-                      Edit
+                      More
                     </Link>
                   </Button>
                 </Card>
