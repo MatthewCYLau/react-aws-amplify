@@ -8,16 +8,19 @@ import { Link } from "react-router-dom";
 const { Content } = Layout;
 
 const EditTodoPage = ({ location }) => {
-  const loadingState = false;
-  const [todo, setTodo] = useState({});
-  const [loadingComplete, setloadingComplete] = useState(loadingState);
+  const initialLoadingState = false;
+  const initialTodoState = { name: "", description: "" };
+  const [todo, setTodo] = useState(initialTodoState);
+  const [loadingState, setloadingState] = useState(initialLoadingState);
 
   async function fetchTodo() {
     try {
       const id = location.pathname.split("/")[2];
       const todo = await API.graphql(graphqlOperation(getTodo, { id }));
-      setTodo(todo);
-      setloadingComplete({ loadingComplete: true });
+      const name = todo.data.getTodo.name;
+      const description = todo.data.getTodo.description;
+      setTodo({ name, description });
+      setloadingState({ loadingState: true });
     } catch (err) {
       console.log("error fetching todo");
     }
@@ -26,6 +29,7 @@ const EditTodoPage = ({ location }) => {
   useEffect(() => {
     fetchTodo();
   }, []);
+
   return (
     <div>
       <Content style={{ padding: "0 50px" }}>
@@ -36,9 +40,9 @@ const EditTodoPage = ({ location }) => {
             style={styles.header}
           />
         </div>
-        {loadingComplete ? (
-          <Card title={"To-do"} style={{ width: 300 }}>
-            <p>"Description"</p>
+        {loadingState ? (
+          <Card title={todo.name} style={{ width: 300 }}>
+            <p>{todo.description}</p>
             <Button type="primary">Save</Button>
             <Button>
               <Link className="button">Back</Link>
