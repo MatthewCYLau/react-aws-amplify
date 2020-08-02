@@ -1,5 +1,11 @@
 {
     "AppSyncApiName": "taskapp",
     "DynamoDBBillingMode": "PAY_PER_REQUEST",
-    "DynamoDBEnableServerSideEncryption": false
+    "DynamoDBEnableServerSideEncryption": false,
+    "AuthCognitoUserPoolId": {
+        "Fn::GetAtt": [
+            "authtaskappe927e6c9",
+            "Outputs.UserPoolId"
+        ]
+    }
 }
