@@ -7,12 +7,14 @@ import { PageHeader } from "antd";
 import { Card, Button, Input } from "antd";
 import "antd/dist/antd.css";
 import { Layout, Spin } from "antd";
+import { Auth } from "aws-amplify";
 
 const { Content } = Layout;
 
 const HomePage = () => {
   const initialFormState = { name: "", description: "" };
   const loadingState = false;
+  const [currentUsername, setCurrentUsername] = useState("");
   const [formState, setFormState] = useState(initialFormState);
   const [todos, setTodos] = useState([]);
   const [loadingComplete, setloadingComplete] = useState(loadingState);
@@ -61,13 +63,17 @@ const HomePage = () => {
     }
   }
 
+  Auth.currentSession()
+    .then(data => setCurrentUsername(data.accessToken.payload.username))
+    .catch(err => console.log(err));
+
   return (
     <div>
       <Content style={{ padding: "0 50px" }}>
         <div className="site-layout-content">
           <PageHeader
             className="site-page-header"
-            title="Matt's To-Do"
+            title={currentUsername + " To-Do's"}
             subTitle="powered By AWS Amplify"
             style={styles.header}
           />

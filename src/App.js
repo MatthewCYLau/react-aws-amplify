@@ -1,6 +1,6 @@
 import React, { Fragment } from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import Amplify from "aws-amplify";
+import { Amplify } from "aws-amplify";
 import { withAuthenticator } from "@aws-amplify/ui-react";
 import awsExports from "./aws-exports";
 import HomePage from "../src/pages/HomePage";
