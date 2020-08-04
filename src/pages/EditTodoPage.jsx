@@ -5,6 +5,7 @@ import { updateTodo } from "../graphql/mutations";
 import { PageHeader } from "antd";
 import { Layout, Card, Button, Spin, Input } from "antd";
 import { Link } from "react-router-dom";
+import { Auth } from "aws-amplify";
 
 const { Content } = Layout;
 
@@ -14,12 +15,15 @@ const EditTodoPage = ({ location, history }) => {
   const [formState, setFormState] = useState(initialFormState);
 
   // todo state
-  const initialTodoState = { name: "", description: "" };
+  const initialTodoState = { name: "", description: "", owner: "" };
   const [todo, setTodo] = useState(initialTodoState);
 
   // loading state
   const initialLoadingState = false;
   const [loadingState, setloadingState] = useState(initialLoadingState);
+
+  // current username state
+  const [currentUsername, setCurrentUsername] = useState("");
 
   const id = location.pathname.split("/")[2];
 
@@ -28,12 +32,17 @@ const EditTodoPage = ({ location, history }) => {
       const todo = await API.graphql(graphqlOperation(getTodo, { id }));
       const name = todo.data.getTodo.name;
       const description = todo.data.getTodo.description;
-      setTodo({ name, description });
+      const owner = todo.data.getTodo.owner;
+      setTodo({ name, description, owner });
       setloadingState({ loadingState: true });
     } catch (err) {
       console.log("error fetching todo");
     }
   }
+
+  Auth.currentSession()
+    .then(data => setCurrentUsername(data.accessToken.payload.username))
+    .catch(err => console.log(err));
 
   async function editTodo() {
     try {
@@ -76,21 +85,27 @@ const EditTodoPage = ({ location, history }) => {
         </div>
         {loadingState ? (
           <div>
-            <Input
-              onChange={event => setInput("name", event.target.value)}
-              value={formState.name}
-              placeholder="Name"
-              style={styles.input}
-            />
-            <Input
-              onChange={event => setInput("description", event.target.value)}
-              value={formState.description}
-              placeholder="Description"
-              style={styles.input}
-            />
-            <Button onClick={editTodo} type="primary" style={styles.submit}>
-              Save
-            </Button>
+            {currentUsername === todo.owner && (
+              <div>
+                <Input
+                  onChange={event => setInput("name", event.target.value)}
+                  value={formState.name}
+                  placeholder="Name"
+                  style={styles.input}
+                />
+                <Input
+                  onChange={event =>
+                    setInput("description", event.target.value)
+                  }
+                  value={formState.description}
+                  placeholder="Description"
+                  style={styles.input}
+                />
+                <Button onClick={editTodo} type="primary" style={styles.submit}>
+                  Save
+                </Button>
+              </div>
+            )}
             <Card title={todo.name} style={{ width: 300 }}>
               <p>{todo.description}</p>
               <Button>

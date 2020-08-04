@@ -73,8 +73,8 @@ const HomePage = () => {
         <div className="site-layout-content">
           <PageHeader
             className="site-page-header"
-            title={currentUsername + " To-Do's"}
-            subTitle="powered By AWS Amplify"
+            title={"Welcome " + currentUsername}
+            subTitle="To-do list powered by AWS Amplify"
             style={styles.header}
           />
           <div>
@@ -103,9 +103,11 @@ const HomePage = () => {
                   style={{ width: 300 }}
                 >
                   <p>{todo.description}</p>
-                  <Button type="primary" onClick={() => removeTodo(todo.id)}>
-                    Done
-                  </Button>
+                  {currentUsername === todo.owner && (
+                    <Button type="primary" onClick={() => removeTodo(todo.id)}>
+                      Done
+                    </Button>
+                  )}
                   <Button>
                     <Link className="button" to={`/edit/${todo.id}`}>
                       More
