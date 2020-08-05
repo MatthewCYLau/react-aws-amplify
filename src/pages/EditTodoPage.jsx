@@ -2,10 +2,10 @@ import React, { useEffect, useState } from "react";
 import { API, graphqlOperation } from "aws-amplify";
 import { getTodo } from "../graphql/queries";
 import { updateTodo } from "../graphql/mutations";
-import { PageHeader } from "antd";
-import { Layout, Card, Button, Spin, Input } from "antd";
+import { Layout, Card, Button, Spin, Input, PageHeader } from "antd";
 import { Link } from "react-router-dom";
 import { Auth } from "aws-amplify";
+import CommentList from "../components/CommentList";
 
 const { Content } = Layout;
 
@@ -114,6 +114,7 @@ const EditTodoPage = ({ location, history }) => {
                 </Link>
               </Button>
             </Card>
+            <CommentList todoId={id} currentUsername={currentUsername} />
           </div>
         ) : (
           <Spin />

@@ -5,4 +5,22 @@ type Todo
   name: String!
   description: String
   owner: String
+  comments: [Comment] @connection(name: "TodoComments")
+}
+
+type Comment
+  @model
+  @auth(rules: [{ allow: owner, operations: [create, delete, update] }]) {
+  id: ID!
+  content: String
+  owner: String
+  todo: Todo @connection(name: "TodoComments")
+  likes: [Like] @connection(name: "CommentLikes")
+}
+type Like
+  @model
+  @auth(rules: [{ allow: owner, operations: [create, delete, update] }]) {
+  id: ID!
+  owner: String
+  comment: Comment @connection(name: "CommentLikes")
 }
