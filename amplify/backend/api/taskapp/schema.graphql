@@ -5,16 +5,17 @@ type Todo
   name: String!
   description: String
   owner: String
-  comments: [Comment] @connection(name: "TodoComments")
+  comments: [Comment] @connection(keyName: "byTodo", fields: ["id"])
 }
 
 type Comment
   @model
+  @key(name: "byTodo", fields: ["todoID"])
   @auth(rules: [{ allow: owner, operations: [create, delete, update] }]) {
   id: ID!
   content: String
   owner: String
-  todo: Todo @connection(name: "TodoComments")
+  todoID: ID!
   likes: [Like] @connection(name: "CommentLikes")
 }
 type Like

@@ -4,7 +4,7 @@ import { listComments } from "../graphql/queries";
 import { PageHeader, Spin, Card, Input, Button } from "antd";
 import { createComment, deleteComment } from "../graphql/mutations";
 
-const CommentList = ({ todoId, currentUsername }) => {
+const CommentList = ({ todoID, currentUsername }) => {
   const initialFormState = { content: "" };
   const [formState, setFormState] = useState(initialFormState);
   const [comments, setComments] = useState([]);
@@ -19,11 +19,16 @@ const CommentList = ({ todoId, currentUsername }) => {
 
   async function fetchComments() {
     try {
-      const commentsDetails = await API.graphql(graphqlOperation(listComments));
-      const allComments = commentsDetails.data.listComments.items;
-      const comments = allComments.filter(
-        comment => comment.todo.id === todoId
+      const filter = {
+        todoID: {
+          eq: todoID
+        }
+      };
+      const commentsDetails = await API.graphql(
+        graphqlOperation(listComments, { filter })
       );
+      const comments = commentsDetails.data.listComments.items;
+
       setComments(comments);
       setloadingComplete({ loadingComplete: true });
     } catch (err) {
@@ -34,7 +39,7 @@ const CommentList = ({ todoId, currentUsername }) => {
   async function addComment() {
     try {
       if (!formState.content) return;
-      const comment = { ...formState, commentTodoId: todoId };
+      const comment = { ...formState, todoID };
       setFormState(initialFormState);
       await API.graphql(graphqlOperation(createComment, { input: comment }));
       fetchComments();

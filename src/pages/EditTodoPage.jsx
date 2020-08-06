@@ -114,7 +114,7 @@ const EditTodoPage = ({ location, history }) => {
                 </Link>
               </Button>
             </Card>
-            <CommentList todoId={id} currentUsername={currentUsername} />
+            <CommentList todoID={id} currentUsername={currentUsername} />
           </div>
         ) : (
           <Spin />

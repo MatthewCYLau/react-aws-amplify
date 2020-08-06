@@ -13,6 +13,7 @@ export const getTodo = /* GraphQL */ `
           id
           content
           owner
+          todoID
           createdAt
           updatedAt
         }
@@ -51,17 +52,7 @@ export const getComment = /* GraphQL */ `
       id
       content
       owner
-      todo {
-        id
-        name
-        description
-        owner
-        comments {
-          nextToken
-        }
-        createdAt
-        updatedAt
-      }
+      todoID
       likes {
         items {
           id
@@ -87,14 +78,7 @@ export const listComments = /* GraphQL */ `
         id
         content
         owner
-        todo {
-          id
-          name
-          description
-          owner
-          createdAt
-          updatedAt
-        }
+        todoID
         likes {
           nextToken
         }
@@ -114,14 +98,7 @@ export const getLike = /* GraphQL */ `
         id
         content
         owner
-        todo {
-          id
-          name
-          description
-          owner
-          createdAt
-          updatedAt
-        }
+        todoID
         likes {
           nextToken
         }
@@ -147,6 +124,7 @@ export const listLikes = /* GraphQL */ `
           id
           content
           owner
+          todoID
           createdAt
           updatedAt
         }

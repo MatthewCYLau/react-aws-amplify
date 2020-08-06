@@ -16,6 +16,7 @@ export const createTodo = /* GraphQL */ `
           id
           content
           owner
+          todoID
           createdAt
           updatedAt
         }
@@ -41,6 +42,7 @@ export const updateTodo = /* GraphQL */ `
           id
           content
           owner
+          todoID
           createdAt
           updatedAt
         }
@@ -66,6 +68,7 @@ export const deleteTodo = /* GraphQL */ `
           id
           content
           owner
+          todoID
           createdAt
           updatedAt
         }
@@ -85,17 +88,7 @@ export const createComment = /* GraphQL */ `
       id
       content
       owner
-      todo {
-        id
-        name
-        description
-        owner
-        comments {
-          nextToken
-        }
-        createdAt
-        updatedAt
-      }
+      todoID
       likes {
         items {
           id
@@ -119,17 +112,7 @@ export const updateComment = /* GraphQL */ `
       id
       content
       owner
-      todo {
-        id
-        name
-        description
-        owner
-        comments {
-          nextToken
-        }
-        createdAt
-        updatedAt
-      }
+      todoID
       likes {
         items {
           id
@@ -153,17 +136,7 @@ export const deleteComment = /* GraphQL */ `
       id
       content
       owner
-      todo {
-        id
-        name
-        description
-        owner
-        comments {
-          nextToken
-        }
-        createdAt
-        updatedAt
-      }
+      todoID
       likes {
         items {
           id
@@ -190,14 +163,7 @@ export const createLike = /* GraphQL */ `
         id
         content
         owner
-        todo {
-          id
-          name
-          description
-          owner
-          createdAt
-          updatedAt
-        }
+        todoID
         likes {
           nextToken
         }
@@ -221,14 +187,7 @@ export const updateLike = /* GraphQL */ `
         id
         content
         owner
-        todo {
-          id
-          name
-          description
-          owner
-          createdAt
-          updatedAt
-        }
+        todoID
         likes {
           nextToken
         }
@@ -252,14 +211,7 @@ export const deleteLike = /* GraphQL */ `
         id
         content
         owner
-        todo {
-          id
-          name
-          description
-          owner
-          createdAt
-          updatedAt
-        }
+        todoID
         likes {
           nextToken
         }
