@@ -93,6 +93,7 @@ export const createComment = /* GraphQL */ `
         items {
           id
           owner
+          commentID
           createdAt
           updatedAt
         }
@@ -117,6 +118,7 @@ export const updateComment = /* GraphQL */ `
         items {
           id
           owner
+          commentID
           createdAt
           updatedAt
         }
@@ -141,6 +143,7 @@ export const deleteComment = /* GraphQL */ `
         items {
           id
           owner
+          commentID
           createdAt
           updatedAt
         }
@@ -159,17 +162,7 @@ export const createLike = /* GraphQL */ `
     createLike(input: $input, condition: $condition) {
       id
       owner
-      comment {
-        id
-        content
-        owner
-        todoID
-        likes {
-          nextToken
-        }
-        createdAt
-        updatedAt
-      }
+      commentID
       createdAt
       updatedAt
     }
@@ -183,17 +176,7 @@ export const updateLike = /* GraphQL */ `
     updateLike(input: $input, condition: $condition) {
       id
       owner
-      comment {
-        id
-        content
-        owner
-        todoID
-        likes {
-          nextToken
-        }
-        createdAt
-        updatedAt
-      }
+      commentID
       createdAt
       updatedAt
     }
@@ -207,17 +190,7 @@ export const deleteLike = /* GraphQL */ `
     deleteLike(input: $input, condition: $condition) {
       id
       owner
-      comment {
-        id
-        content
-        owner
-        todoID
-        likes {
-          nextToken
-        }
-        createdAt
-        updatedAt
-      }
+      commentID
       createdAt
       updatedAt
     }

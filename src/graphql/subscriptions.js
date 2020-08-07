@@ -81,6 +81,7 @@ export const onCreateComment = /* GraphQL */ `
         items {
           id
           owner
+          commentID
           createdAt
           updatedAt
         }
@@ -102,6 +103,7 @@ export const onUpdateComment = /* GraphQL */ `
         items {
           id
           owner
+          commentID
           createdAt
           updatedAt
         }
@@ -123,6 +125,7 @@ export const onDeleteComment = /* GraphQL */ `
         items {
           id
           owner
+          commentID
           createdAt
           updatedAt
         }
@@ -138,17 +141,7 @@ export const onCreateLike = /* GraphQL */ `
     onCreateLike {
       id
       owner
-      comment {
-        id
-        content
-        owner
-        todoID
-        likes {
-          nextToken
-        }
-        createdAt
-        updatedAt
-      }
+      commentID
       createdAt
       updatedAt
     }
@@ -159,17 +152,7 @@ export const onUpdateLike = /* GraphQL */ `
     onUpdateLike {
       id
       owner
-      comment {
-        id
-        content
-        owner
-        todoID
-        likes {
-          nextToken
-        }
-        createdAt
-        updatedAt
-      }
+      commentID
       createdAt
       updatedAt
     }
@@ -180,17 +163,7 @@ export const onDeleteLike = /* GraphQL */ `
     onDeleteLike {
       id
       owner
-      comment {
-        id
-        content
-        owner
-        todoID
-        likes {
-          nextToken
-        }
-        createdAt
-        updatedAt
-      }
+      commentID
       createdAt
       updatedAt
     }

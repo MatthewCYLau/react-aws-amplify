@@ -57,6 +57,7 @@ export const getComment = /* GraphQL */ `
         items {
           id
           owner
+          commentID
           createdAt
           updatedAt
         }
@@ -94,17 +95,7 @@ export const getLike = /* GraphQL */ `
     getLike(id: $id) {
       id
       owner
-      comment {
-        id
-        content
-        owner
-        todoID
-        likes {
-          nextToken
-        }
-        createdAt
-        updatedAt
-      }
+      commentID
       createdAt
       updatedAt
     }
@@ -120,14 +111,7 @@ export const listLikes = /* GraphQL */ `
       items {
         id
         owner
-        comment {
-          id
-          content
-          owner
-          todoID
-          createdAt
-          updatedAt
-        }
+        commentID
         createdAt
         updatedAt
       }

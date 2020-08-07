@@ -16,12 +16,13 @@ type Comment
   content: String
   owner: String
   todoID: ID!
-  likes: [Like] @connection(name: "CommentLikes")
+  likes: [Like] @connection(keyName: "byComment", fields: ["id"])
 }
 type Like
   @model
+  @key(name: "byComment", fields: ["commentID"])
   @auth(rules: [{ allow: owner, operations: [create, delete, update] }]) {
   id: ID!
   owner: String
-  comment: Comment @connection(name: "CommentLikes")
+  commentID: ID!
 }
