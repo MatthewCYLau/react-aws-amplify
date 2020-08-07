@@ -1,14 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { API, graphqlOperation } from "aws-amplify";
-import { listComments, listLikes } from "../graphql/queries";
+import { listComments } from "../graphql/queries";
 import { PageHeader, Spin, Card, Input, Button } from "antd";
-import { LikeOutlined } from "@ant-design/icons";
-import {
-  createComment,
-  deleteComment,
-  createLike,
-  deleteLike
-} from "../graphql/mutations";
+import Likes from "./Likes";
+
+import { createComment, deleteComment } from "../graphql/mutations";
 
 const CommentList = ({ todoID, currentUsername }) => {
   const initialFormState = { content: "" };
@@ -68,18 +64,6 @@ const CommentList = ({ todoID, currentUsername }) => {
     }
   }
 
-  const handleOnClickLike = async commentID => {
-    try {
-      const likeDetails = { commentID };
-      await API.graphql(graphqlOperation(createLike, { input: likeDetails }));
-    } catch (err) {
-      console.log("error creating like:", err);
-    }
-  };
-
-  const fetchLikesCountByComment = commentID => {
-    return commentID;
-  };
   return (
     <div>
       <PageHeader
@@ -115,12 +99,7 @@ const CommentList = ({ todoID, currentUsername }) => {
                   Delete
                 </Button>
               )}
-              <Button
-                icon={<LikeOutlined />}
-                onClick={() => handleOnClickLike(comment.id)}
-              >
-                {fetchLikesCountByComment(comment.id)}
-              </Button>
+              <Likes commentID={comment.id} currentUsername={currentUsername} />
             </Card>
           ))}
         </div>
